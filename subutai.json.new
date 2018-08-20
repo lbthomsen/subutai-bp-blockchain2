@@ -43,11 +43,41 @@
             "container-per-peer": "1"
         }
     ],
+    "ansible-configuration": {
+        "source-url": "https://github.com/lbthomsen/subutai-bp-blockchain2/archive/master.zip",
+        "ansible-playbook": "site.yml",
+        "extra-vars": [
+            {
+                "key": "prime_user",
+                "value": "${primeUser}"
+            }
+        ],
+        "groups": [
+            {
+                "name": "bs",
+                "hostnames": [
+                    "bs0"
+                ]
+            },
+            {
+                "name": "bc",
+                "hostnames": [
+                    "bc"
+                ]
+            },
+            {
+                "name": "m",
+                "hostnames": [
+                    "m"
+                ]
+            }
+        ]
+    },
     "user-variables": {
         "environmentName": {
             "description": "Enter the environment name",
             "type": "string",
-            "default": "biab2",
+            "default": "prime95",
             "validation": "[a-zA-Z0-9]+"
         },
         "numberOfNodes": {
