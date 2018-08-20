@@ -10,19 +10,19 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "size": "LARGE"
-        }, 
+        },
         {
             "hostname": "bc",
             "template": "debian-stretch",
             "peer-criteria": "peers",
-            "peer-layout": "bc", 
+            "peer-layout": "bc",
             "size": "LARGE"
-        }, 
+        },
         {
             "hostname": "m",
             "template": "debian-stretch",
             "peer-criteria": "peers",
-            "peer-layout": "m", 
+            "peer-layout": "m",
             "size": "LARGE"
         }
     ],
@@ -35,12 +35,12 @@
         {
             "name": "bc",
             "peer-count": "${numberOfNodes}",
-            "container-per-peer": 1
+            "container-per-peer": "1"
         },
         {
             "name": "m",
             "peer-count": "${numberOfMiners}",
-            "container-per-peer": 1
+            "container-per-peer": "1"
         }
     ],
     "ansible-configuration": {
@@ -58,7 +58,7 @@
                 "hostnames": [
                     "bs0"
                 ]
-            }, 
+            },
             {
                 "name": "bc",
                 "hostnames": [
