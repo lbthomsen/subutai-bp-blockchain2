@@ -8,6 +8,11 @@
     - name: Disable dpkg fsync
       raw: test -e /etc/dpkg/dpkg.cfg.d/unsafe-io || echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/unsafe-io
 
+    - name: Install dirmngr
+      apt:
+        name: dirmngr
+        state: present
+
     - name: Add ethereum repo key
       apt_key:
         id: "1C52189C923F6CA9"
@@ -30,7 +35,7 @@
       with_items: 
         - ethereum 
 
-- hosts: bs
+- hosts: bn
   remote_user: root
   tasks:
 

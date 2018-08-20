@@ -6,10 +6,10 @@
     "ssh-key": "lth",
     "containers": [
         {
-            "hostname": "bs",
+            "hostname": "bn",
             "template": "debian-stretch",
             "peer-criteria": "peers",
-            "peer-layout": "bs", 
+            "peer-layout": "bn", 
             "size": "SMALL"
         },
         {
@@ -34,7 +34,7 @@
     ],
     "peer-layouts": [
         {
-            "name": "bs",
+            "name": "bn",
             "peer-count": "1",
             "container-per-peer": "1"
         },
@@ -54,9 +54,9 @@
         "ansible-playbook": "site.yml",
         "groups": [
             {
-                "name": "bs",
+                "name": "bn",
                 "hostnames": [
-                    "bs"
+                    "bn"
                 ]
             },
             {
