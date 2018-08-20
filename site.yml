@@ -1,0 +1,27 @@
+# Ansible Playbook for Subutai Blockchain II blueprint
+---
+
+- hosts: all
+  remote_user: root
+  tasks:
+
+    - name: Disable dpkg fsync
+      raw: test -e /etc/dpkg/dpkg.cfg.d/unsafe-io || echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/unsafe-io
+
+    - name: Upgrade debian
+      apt:
+        update_cache: true
+        upgrade: true
+
+- hosts: wp
+  remote_user: root
+  tasks:
+
+    - name: Install required debs
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - unzip 
+
+# vim: ts=4 et nowrap autoindent
