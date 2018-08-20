@@ -9,6 +9,7 @@
             "hostname": "bs0",
             "template": "debian-stretch",
             "peer-criteria": "peers",
+            "peer-layout": "bs", 
             "size": "LARGE"
         },
         {
@@ -32,6 +33,11 @@
         }
     ],
     "peer-layouts": [
+        {
+            "name": "bs",
+            "peer-count": "1",
+            "container-per-peer": "1"
+        },
         {
             "name": "bc",
             "peer-count": "${numberOfNodes}",
