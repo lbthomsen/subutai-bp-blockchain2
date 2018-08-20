@@ -58,6 +58,18 @@
                 "hostnames": [
                     "bs0"
                 ]
+            }, 
+            {
+                "name": "bc",
+                "hostnames": [
+                    "bc"
+                ]
+            },
+            {
+                "name": "m",
+                "hostnames": [
+                    "m"
+                ]
             }
         ]
     },
@@ -70,13 +82,13 @@
         },
         "numberOfNodes": {
             "description": "Enter the number of nodes",
-            "type": "number",
-            "default": 2
+            "type": "int",
+            "default": "2"
         },
         "numberOfMiners": {
             "description": "Enter the number of miners",
-            "type": "number",
-            "default": 2
+            "type": "int",
+            "default": "2"
         }
     }
 }
