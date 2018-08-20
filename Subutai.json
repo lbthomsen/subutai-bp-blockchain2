@@ -6,11 +6,11 @@
     "ssh-key": "lth",
     "containers": [
         {
-            "hostname": "bs0",
+            "hostname": "bs",
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "bs", 
-            "size": "LARGE"
+            "size": "SMALL"
         },
         {
             "hostname": "bc",
@@ -56,7 +56,7 @@
             {
                 "name": "bs",
                 "hostnames": [
-                    "bs0"
+                    "bs"
                 ]
             },
             {

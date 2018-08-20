@@ -8,12 +8,29 @@
     - name: Disable dpkg fsync
       raw: test -e /etc/dpkg/dpkg.cfg.d/unsafe-io || echo force-unsafe-io > /etc/dpkg/dpkg.cfg.d/unsafe-io
 
+    - name: Add ethereum repo key
+      apt_key:
+        id: "1C52189C923F6CA9"
+        keyserver: keyserver.ubuntu.com
+
+    - name: Add ethereum repo
+      apt_repository:
+        repo: deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main
+        state: present
+
     - name: Upgrade debian
       apt:
         update_cache: true
         upgrade: true
 
-- hosts: wp
+    - name: Install required debs
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - ethereum 
+
+- hosts: bs
   remote_user: root
   tasks:
 
