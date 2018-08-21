@@ -57,7 +57,7 @@
         creates: /etc/bootnode.key
 
     - name: Fetch bootnode key
-      shell: cat /etc/bootnode.key
+      shell: bootnode --nodekey /etc/bootnode.key --writeaddress
       register: bootnode_key
 
     - name: Fetch bootnode hostname
