@@ -1,0 +1,13 @@
+[Unit]
+Description=Run Bootnode
+
+[Service]
+Type=simple
+EnvironmentFile=-/etc/default/bootnode
+ExecStart=/usr/bin/bootnode -nodekey /etc/bootnode.key
+Restart=on-failure
+LimitNICE=+10
+
+[Install]
+WantedBy=multi-user.target
+Alias=bootnode.service

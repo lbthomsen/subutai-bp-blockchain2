@@ -10,7 +10,15 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "bn", 
-            "size": "SMALL"
+            "size": "LARGE", 
+            "port-mapping": [
+                {
+                    "protocol": "udp", 
+                    "domain": "${bootnodeDomain}", 
+                    "internal-port": "30301", 
+                    "external-port": "${bootnodePort}"
+                }
+            ]
         },
         {
             "hostname": "bc",
@@ -52,6 +60,16 @@
     "ansible-configuration": {
         "source-url": "https://github.com/lbthomsen/subutai-bp-blockchain2/archive/master.zip",
         "ansible-playbook": "site.yml",
+        "extra-vars": [
+            {
+                "key": "bootnode_domain", 
+                "value": "${bootnodeDomain}"
+            }, 
+            {
+                "key": "ethereum_network", 
+                "value": "${ethereumNetwork}"
+            }
+        ],
         "groups": [
             {
                 "name": "bn",
@@ -74,6 +92,17 @@
         ]
     },
     "user-variables": {
+        "bootnodeDomain": {
+            "description": "Enter the application domain name",
+            "type": "domain",
+            "default": "change.the.domain",
+            "validation": "[a-zA-Z0-9]+"
+        },
+        "bootnodePort": {
+            "description": "Enter the bootnode port number",
+            "type": "int",
+            "default": "30301"
+        },
         "environmentName": {
             "description": "Enter the environment name",
             "type": "string",
@@ -89,6 +118,11 @@
             "description": "Enter the number of miners",
             "type": "int",
             "default": "2"
+        }, 
+        "ethereumNetwork": {
+            "description": "Enter the ethereum network id",
+            "type": "int",
+            "default": "2020"
         }
     }
 }
