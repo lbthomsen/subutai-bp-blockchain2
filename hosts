@@ -1,0 +1,17 @@
+
+bn0 ansible_port=10003 ansible_host=10.207.124.1
+bc0 ansible_port=10004 ansible_host=10.207.124.1
+bc1 ansible_port=10006 ansible_host=10.207.124.2
+m0 ansible_port=10005 ansible_host=10.207.124.1
+m1 ansible_port=10008 ansible_host=10.207.124.2
+
+[bn]
+bn0
+
+[bc]
+bc0
+bc1
+
+[m]
+m0
+m1
