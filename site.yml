@@ -44,6 +44,7 @@
         name: "{{ item }}"
         state: present
       with_items: 
+        - sudo
         - ethereum 
 
 - hosts: bn
@@ -118,8 +119,5 @@
 - hosts: bc
   remote_user: root
   tasks:
-
-
-
 
 # vim: ts=4 et nowrap autoindent
