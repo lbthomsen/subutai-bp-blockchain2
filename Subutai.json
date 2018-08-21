@@ -1,6 +1,6 @@
 {
     "name": "${environmentName}",
-    "description": "Blockchain II",
+    "description": "Blockchain mk. II",
     "version": "0.0.1",
     "author": "https://github.com/lbthomsen",
     "ssh-key": "lth",

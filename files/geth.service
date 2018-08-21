@@ -1,11 +1,14 @@
 [Unit]
 Description=Run Geth
+After=bootnode.service
 
 [Service]
 Type=simple
 EnvironmentFile=-/etc/default/geth
 ExecStart=/usr/bin/geth
 Restart=on-failure
+User=biab
+Group=users
 LimitNICE=+10
 
 [Install]
