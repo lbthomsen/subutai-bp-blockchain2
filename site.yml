@@ -109,9 +109,9 @@
         dest: /etc/default/geth
 
     - name: Initialize blockchain
-      shell: geth --datadir .ethereum/{{ ethereumNetwork }} init /etc/genesis.json
+      shell: geth --datadir .ethereum/{{ ethereum_network }} init /etc/genesis.json
       args: 
-        creates: /home/biab/.ethereum/{{ ethereumNetwork }}/geth/chaindata/000001.log
+        creates: /home/biab/.ethereum/{{ ethereum_network }}/geth/chaindata/000001.log
       become: yes
       become_user: biab
 
