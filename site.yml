@@ -58,27 +58,11 @@
 
     - name: Fetch bootnode key
       shell: cat /etc/bootnode.key
-      register: bootnode_key_fetch
-
-    - name: Store bootnode key
-      set_fact:
-        bootnode_key: "{{ bootnode_key_fetch.stdout }}"
-
-    - name: Show bootnode key
-      debug:
-        var: bootnode_key
+      register: bootnode_key
 
     - name: Fetch bootnode hostname
       shell: hostname
-      register: bootnode_hostname_fetch
-
-    - name: Store hostname
-      set_fact:
-        bootnode_hostname: "{{ bootnode_hostname_fetch.stdout }}"
-
-    - name: Show hostname
-      debug:
-        var: bootnode_hostname
+      register: bootnode_hostname
 
     - name: Install bootnode service
       template:
@@ -104,11 +88,6 @@
         src: files/genesis.json
         dest: /etc
 
-    - name: Set geth default
-      template:
-        src: files/geth.default
-        dest: /etc/default/geth
-
     - name: Initialize blockchain
       shell: geth --datadir .ethereum/{{ ethereum_network }} init /etc/genesis.json
       args: 
@@ -116,8 +95,38 @@
       become: yes
       become_user: biab
 
+    - name: Save global variables
+      add_host:
+        name: GLOBAL
+        bootnode_key: "{{bootnode_key.stdout}}"
+        bootnode_hostname: "{{bootnode_hostname.stdout}}"
+
 - hosts: bc
   remote_user: root
   tasks:
+
+    - name: Set geth default
+      template:
+        src: files/geth.default
+        dest: /etc/default/geth
+
+    - name: Install geth.service
+      template: 
+        src: files/geth.service
+        dest: /lib/systemd/system
+
+    - name: Reload systemd
+      systemd:
+        daemon_reload: yes
+
+    - name: Make sure geth.service is enabled
+      shell: systemctl enable geth
+      args:
+        creates: /etc/systemd/system/multi-user.target.wants/geth.service
+
+    - name: Restart geth
+      systemd:
+        name: geth
+        state: restarted
 
 # vim: ts=4 et nowrap autoindent

@@ -1,6 +1,6 @@
 #
 # Geth Service Defaults
 #
-BOOTNODE_HOST={{ bootnode_hostname }}
-BOOTNODE_KEY={{ bootnode_key }}
+BOOTNODE_HOST={{ hostvars.GLOBAL.bootnode_hostname }}
+BOOTNODE_KEY={{ hostvars.GLOBAL.bootnode_key }}
 NETWORK={{ ethereum_network }}

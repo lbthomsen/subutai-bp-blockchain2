@@ -80,6 +80,7 @@
             {
                 "name": "bc",
                 "hostnames": [
+                    "bn", 
                     "bc"
                 ]
             },
