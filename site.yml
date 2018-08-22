@@ -103,12 +103,6 @@
       become: yes
       become_user: biab
 
-    - name: Save global variables
-      add_host:
-        name: GLOBAL
-        bootnode_key: "{{bootnode_key.stdout}}"
-        bootnode_hostname: "{{bootnode_hostname.stdout}}"
-
 - hosts: all
   remote_user: root
   tasks:
