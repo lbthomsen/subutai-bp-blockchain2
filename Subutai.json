@@ -9,13 +9,13 @@
             "hostname": "bn",
             "template": "debian-stretch",
             "peer-criteria": "peers",
-            "peer-layout": "bn", 
-            "size": "LARGE", 
+            "peer-layout": "bn",
+            "size": "LARGE",
             "port-mapping": [
                 {
-                    "protocol": "udp", 
-                    "domain": "${bootnodeDomain}", 
-                    "internal-port": "30301", 
+                    "protocol": "udp",
+                    "domain": "${bootnodeDomain}",
+                    "internal-port": "30301",
                     "external-port": "${bootnodePort}"
                 }
             ]
@@ -62,11 +62,11 @@
         "ansible-playbook": "site.yml",
         "extra-vars": [
             {
-                "key": "bootnode_domain", 
+                "key": "bootnode_domain",
                 "value": "${bootnodeDomain}"
-            }, 
+            },
             {
-                "key": "ethereum_network", 
+                "key": "ethereum_network",
                 "value": "${ethereumNetwork}"
             }
         ],
@@ -78,14 +78,6 @@
                 ]
             },
             {
-                "name": "geth", 
-                "hostnames": [
-                    "bn", 
-                    "bc", 
-                    "m"
-                ]
-            },
-            {
                 "name": "bc",
                 "hostnames": [
                     "bc"
@@ -94,6 +86,14 @@
             {
                 "name": "m",
                 "hostnames": [
+                    "m"
+                ]
+            }, 
+            {
+                "name": "geth",
+                "hostnames": [
+                    "bn",
+                    "bc",
                     "m"
                 ]
             }
@@ -126,7 +126,7 @@
             "description": "Enter the number of miners",
             "type": "int",
             "default": "2"
-        }, 
+        },
         "ethereumNetwork": {
             "description": "Enter the ethereum network id",
             "type": "int",

@@ -8,8 +8,14 @@ m1 ansible_port=10008 ansible_host=10.207.124.1
 [bn]
 bn
 
-[bc]
+[geth]
 bn
+bc0
+bc1
+m0
+m1
+
+[bc]
 bc0
 bc1
 
