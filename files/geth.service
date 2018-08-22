@@ -5,7 +5,7 @@ After=bootnode.service
 [Service]
 Type=simple
 EnvironmentFile=-/etc/default/geth
-ExecStart=/usr/bin/geth --datadir ~/.ethereum/${NETWORK} --networkid ${NETWORK} --bootnodes "enode://${BOOTNODE_KEY}@${BOOTNODE_IP}:30301" --mine --minerthreads=1 --etherbase=0xb23f8250a4c0fffca7c595f2051cc83a4d017575
+ExecStart=/usr/bin/geth --datadir ~/.ethereum/${NETWORK} --networkid ${NETWORK} --bootnodes "enode://${BOOTNODE_KEY}@${BOOTNODE_IP}:30301"
 Restart=on-failure
 User=biab
 Group=users

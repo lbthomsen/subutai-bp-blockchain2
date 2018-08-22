@@ -101,7 +101,7 @@
         bootnode_key: "{{bootnode_key.stdout}}"
         bootnode_hostname: "{{bootnode_hostname.stdout}}"
 
-- hosts: bc
+- hosts: geth
   remote_user: root
   tasks:
 

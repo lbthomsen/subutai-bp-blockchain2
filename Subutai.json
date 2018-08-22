@@ -78,9 +78,16 @@
                 ]
             },
             {
-                "name": "bc",
+                "name": "geth", 
                 "hostnames": [
                     "bn", 
+                    "bc", 
+                    "m"
+                ]
+            },
+            {
+                "name": "bc",
+                "hostnames": [
                     "bc"
                 ]
             },
