@@ -1,7 +1,7 @@
 #
 # Geth Service Defaults
 #
-BOOTNODE_HOST={{ hostvars.GLOBAL.bootnode_hostname }}
+BOOTNODE_HOST={{ hostvars.bn.bootnode_hostname }}
 BOOTNODE_IP={{ hostvars.bn.ansible_host }}
-BOOTNODE_KEY={{ hostvars.GLOBAL.bootnode_key }}
+BOOTNODE_KEY={{ hostvars.bn.bootnode_key }}
 NETWORK={{ ethereum_network }}

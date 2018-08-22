@@ -58,11 +58,19 @@
 
     - name: Fetch bootnode key
       shell: bootnode --nodekey /etc/bootnode.key --writeaddress
-      register: bootnode_key
+      register: bootnode_key_fetch
+
+    - name: Store bootnode key
+      set_fact: 
+        bootnode_key: "{{ bootnode_key_fetch.stdout }}"
 
     - name: Fetch bootnode hostname
       shell: hostname
-      register: bootnode_hostname
+      register: bootnode_hostname_fetch
+
+    - name: Store bootnode hostname
+      set_fact: 
+        bootnode_hostname: "{{ bootnode_hostname_fetch.stdout }}"
 
     - name: Install bootnode service
       template:
