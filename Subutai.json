@@ -88,14 +88,6 @@
                 "hostnames": [
                     "m"
                 ]
-            }, 
-            {
-                "name": "geth",
-                "hostnames": [
-                    "bn",
-                    "bc",
-                    "m"
-                ]
             }
         ]
     },
