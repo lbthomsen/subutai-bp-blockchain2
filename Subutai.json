@@ -29,7 +29,7 @@
             "port-mapping": [
                 {
                     "protocol": "http",
-                    "domain": "${blockchainDomainDomain}",
+                    "domain": "${blockchainDomain}",
                     "internal-port": "8545",
                     "external-port": "8545"
                 }
