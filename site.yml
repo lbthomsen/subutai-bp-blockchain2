@@ -46,6 +46,8 @@
       with_items: 
         - sudo
         - ethereum 
+        - net-tools
+        - aptitude
 
 - hosts: bn
   remote_user: root

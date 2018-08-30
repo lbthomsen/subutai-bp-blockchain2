@@ -6,7 +6,7 @@
     "ssh-key": "lth",
     "containers": [
         {
-            "hostname": "bn",
+            "hostname": "bn0",
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "bn",
@@ -74,7 +74,7 @@
             {
                 "name": "bn",
                 "hostnames": [
-                    "bn"
+                    "bn0"
                 ]
             },
             {
@@ -93,7 +93,7 @@
     },
     "user-variables": {
         "bootnodeDomain": {
-            "description": "Enter the application domain name",
+            "description": "Enter the bootnode domain name",
             "type": "domain",
             "default": "change.the.domain",
             "validation": "[a-zA-Z0-9]+"
