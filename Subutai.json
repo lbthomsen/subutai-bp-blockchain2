@@ -74,7 +74,7 @@
                 "value": "${bootnodeDomain}"
             },
             {
-                "key": "blockchainDomain",
+                "key": "blockchain_domain",
                 "value": "${blockchainDomain}"
             },
             {
@@ -141,6 +141,11 @@
             "description": "Enter the ethereum network id",
             "type": "int",
             "default": "2020"
+        }, 
+        "coinbase": {
+            "description": "Enter the coinbase",
+            "type": "string",
+            "default": "0x0CB71B91C8e56de5f93eC953fC3A6DB10045E948"
         }
     }
 }

@@ -7,7 +7,7 @@
     },
   
     "alloc"      : {},
-    "coinbase"   : "0x0000000000000000000000000000000000000000",
+    "coinbase"   : "{{ coinbase }}",
     "difficulty" : "0x400",
     "extraData"  : "",
     "gasLimit"   : "0x2fefd8",

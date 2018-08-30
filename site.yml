@@ -6,6 +6,7 @@
 
 - hosts: all
   remote_user: root
+
   tasks:
 
     - name: Disable dpkg fsync
@@ -113,22 +114,28 @@
       template:
         src: files/geth.default
         dest: /etc/default/geth
+      notify: restart geth
 
     - name: Install geth.service
       template: 
         src: files/geth.service
         dest: /lib/systemd/system
+      notify: restart geth
 
     - name: Reload systemd
       systemd:
         daemon_reload: yes
+      notify: restart geth
 
     - name: Make sure geth.service is enabled
       shell: systemctl enable geth
       args:
         creates: /etc/systemd/system/multi-user.target.wants/geth.service
+      notify: restart geth
 
-    - name: Restart geth
+  handlers:
+
+    - name: restart geth
       systemd:
         name: geth
         state: restarted
