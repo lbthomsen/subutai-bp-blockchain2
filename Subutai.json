@@ -25,7 +25,15 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "bc",
-            "size": "LARGE"
+            "size": "LARGE", 
+            "port-mapping": [
+                {
+                    "protocol": "http",
+                    "domain": "${blockchainDomainDomain}",
+                    "internal-port": "8545",
+                    "external-port": "8545"
+                }
+            ]
         },
         {
             "hostname": "m",
@@ -66,6 +74,10 @@
                 "value": "${bootnodeDomain}"
             },
             {
+                "key": "blockchainDomain",
+                "value": "${blockchainDomain}"
+            },
+            {
                 "key": "ethereum_network",
                 "value": "${ethereumNetwork}"
             }
@@ -94,6 +106,12 @@
     "user-variables": {
         "bootnodeDomain": {
             "description": "Enter the bootnode domain name",
+            "type": "domain",
+            "default": "change.the.domain",
+            "validation": "[a-zA-Z0-9]+"
+        },
+        "blockchainDomain": {
+            "description": "Enter the blockchain domain name",
             "type": "domain",
             "default": "change.the.domain",
             "validation": "[a-zA-Z0-9]+"
