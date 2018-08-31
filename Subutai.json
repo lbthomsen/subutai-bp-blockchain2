@@ -40,7 +40,7 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "m",
-            "size": "SMALL"
+            "size": "LARGE"
         }
     ],
     "peer-criteria": [

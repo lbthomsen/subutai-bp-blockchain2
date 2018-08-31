@@ -5,3 +5,5 @@ BOOTNODE_HOST={{ hostvars.bn0.bootnode_hostname }}
 BOOTNODE_IP={{ hostvars.bn0.ansible_host }}
 BOOTNODE_KEY={{ hostvars.bn0.bootnode_key }}
 NETWORK={{ ethereum_network }}
+COINBASE={{ coinbase }}
+VERBOSITY=4

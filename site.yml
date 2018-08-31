@@ -102,13 +102,27 @@
     - name: Initialize blockchain
       shell: geth --datadir .ethereum/{{ ethereum_network }} init /etc/genesis.json
       args: 
-        creates: /home/biab/.ethereum/{{ ethereum_network }}/geth/chaindata/000001.log
+        creates: /home/biab/.ethereum/{{ ethereum_network }}/geth/chaindata/CURRENT
       become: yes
       become_user: biab
 
 - hosts: all
   remote_user: root
   tasks:
+
+    - name: Copy Genesis
+      template:
+        src: files/genesis.json
+        dest: /home/biab/genesis.json
+        owner: biab
+        group: users
+
+    - name: Initialize blockchain
+      shell: geth --datadir .ethereum/{{ ethereum_network }} init /home/biab/genesis.json
+      args: 
+        creates: /home/biab/.ethereum/{{ ethereum_network }}/geth/chaindata/CURRENT
+      become: yes
+      become_user: biab
 
     - name: Set geth default
       template:
