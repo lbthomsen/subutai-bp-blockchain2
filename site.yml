@@ -89,22 +89,10 @@
       args:
         creates: /etc/systemd/system/multi-user.target.wants/bootnode.service
 
-    - name: Restart boonode
+    - name: Restart bootnode
       systemd:
         name: bootnode
         state: restarted
-
-    - name: Copy Genesis
-      template:
-        src: files/genesis.json
-        dest: /etc
-
-    - name: Initialize blockchain
-      shell: geth --datadir .ethereum/{{ ethereum_network }} init /etc/genesis.json
-      args: 
-        creates: /home/biab/.ethereum/{{ ethereum_network }}/geth/chaindata/CURRENT
-      become: yes
-      become_user: biab
 
 - hosts: all
   remote_user: root
