@@ -4,5 +4,4 @@
 BOOTNODE_IP={{ hostvars.bn0.ansible_default_ipv4.address }}
 BOOTNODE_KEY={{ hostvars.bn0.bootnode_key }}
 NETWORK={{ ethereum_network }}
-COINBASE={{ coinbase }}
 VERBOSITY=4
