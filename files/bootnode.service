@@ -4,7 +4,7 @@ Description=Run Bootnode
 [Service]
 Type=simple
 EnvironmentFile=-/etc/default/bootnode
-ExecStart=/usr/bin/bootnode -nodekey /etc/bootnode.key -verbosity=9
+ExecStart=/usr/bin/bootnode -nodekey /etc/bootnode.key -verbosity=9 -nat any
 Restart=on-failure
 
 [Install]

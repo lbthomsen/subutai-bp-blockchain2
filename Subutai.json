@@ -1,6 +1,6 @@
 {
     "name": "${environmentName}",
-    "description": "Blockchain mk. II",
+    "description": "Blockchain in a Box mk. II (aka. Blockchain in Many Boxes)",
     "version": "0.0.1",
     "author": "https://github.com/lbthomsen",
     "ssh-key": "lth",
@@ -10,7 +10,7 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "bn",
-            "size": "LARGE",
+            "size": "${containerSize}",
             "port-mapping": [
                 {
                     "protocol": "udp",
@@ -25,7 +25,7 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "bc",
-            "size": "LARGE", 
+            "size": "${containerSize}", 
             "port-mapping": [
                 {
                     "protocol": "http",
@@ -40,7 +40,7 @@
             "template": "debian-stretch",
             "peer-criteria": "peers",
             "peer-layout": "m",
-            "size": "LARGE"
+            "size": "${containerSize}"
         }
     ],
     "peer-criteria": [
@@ -80,6 +80,10 @@
             {
                 "key": "ethereum_network",
                 "value": "${ethereumNetwork}"
+            }, 
+            {
+                "key": "coinbase", 
+                "value": "${coinbase}"
             }
         ],
         "groups": [
@@ -146,6 +150,12 @@
             "description": "Enter the coinbase",
             "type": "string",
             "default": "0x0CB71B91C8e56de5f93eC953fC3A6DB10045E948"
+        }, 
+        "containerSize": {
+            "description": "Container Size",
+            "type": "enum",
+            "default": "LARGE",
+            "validation": "MEDIUM,LARGE,HUGE"
         }
     }
 }

@@ -49,6 +49,7 @@
         - ethereum 
         - net-tools
         - aptitude
+        - screen 
 
 - hosts: bn
   remote_user: root
@@ -58,22 +59,6 @@
       shell: bootnode -genkey /etc/bootnode.key
       args: 
         creates: /etc/bootnode.key
-
-    - name: Fetch bootnode key
-      shell: bootnode --nodekey /etc/bootnode.key --writeaddress
-      register: bootnode_key_fetch
-
-    - name: Store bootnode key
-      set_fact: 
-        bootnode_key: "{{ bootnode_key_fetch.stdout }}"
-
-    - name: Fetch bootnode hostname
-      shell: hostname
-      register: bootnode_hostname_fetch
-
-    - name: Store bootnode hostname
-      set_fact: 
-        bootnode_hostname: "{{ bootnode_hostname_fetch.stdout }}"
 
     - name: Install bootnode service
       template:
@@ -97,6 +82,16 @@
 - hosts: all
   remote_user: root
   tasks:
+
+    - name: Fetch bootnode key
+      shell: "bootnode --nodekey /etc/bootnode.key --writeaddress"
+      register: bootnode_key_fetch
+      when: inventory_hostname == 'bn0'
+
+    - name: Store bootnode key
+      set_fact: 
+        bootnode_key: "{{ bootnode_key_fetch.stdout }}"
+      when: bootnode_key_fetch.changed
 
     - name: Copy Genesis
       template:
@@ -126,6 +121,8 @@
 
     - name: Reload systemd
       systemd:
+        name: geth
+        state: started
         daemon_reload: yes
       notify: restart geth
 
@@ -141,5 +138,27 @@
       systemd:
         name: geth
         state: restarted
+
+- hosts: all
+  remote_user: root
+  tasks:
+
+    - name: Fetch id for each node
+      shell: geth --exec "admin.nodeInfo.id" attach /home/biab/.ethereum/{{ ethereum_network }}/geth.ipc
+      register: fetch_id
+
+    - name: Set bootnodes
+      template:
+        src: files/static-nodes.json
+        dest: /home/biab/.ethereum/{{ ethereum_network }}/geth/static-nodes.json
+      become: yes
+      become_user: biab
+      register: bootnodes
+
+    - name: restart geth
+      systemd:
+        name: geth
+        state: restarted
+      when: bootnodes.changed
 
 # vim: ts=4 et nowrap autoindent
