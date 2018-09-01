@@ -1,3 +1,3 @@
 [
-    "enode://{{ hostvars.bn0.bootnode_key }}@{{ hostvars[groups.bn[0]].ansible_default_ipv4.address }}:30301"{% for host in groups.all %},"enode://{{ hostvars[host].fetch_id.stdout }}@{{ hostvars[host].ansible_default_ipv4.address }}:30303"{% endfor %}
+    "enode://{{ hostvars[groups.bn[0]].bootnode_key }}@{{ hostvars[groups.bn[0]].ansible_default_ipv4.address }}:30301"{% for host in groups.all %},"enode://{{ hostvars[host].fetch_id.stdout }}@{{ hostvars[host].ansible_default_ipv4.address }}:30303"{% endfor %}
 ]
