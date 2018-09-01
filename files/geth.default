@@ -1,7 +1,7 @@
 #
 # Geth Service Defaults
 #
-BOOTNODE_IP={{ hostvars.bn.ansible_default_ipv4.address }}
-BOOTNODE_KEY={{ hostvars.bn.bootnode_key }}
+BOOTNODE_IP={{ hostvars[groups.bn[0]].ansible_default_ipv4.address }}
+BOOTNODE_KEY={{ hostvars[groups.bn[0]].bootnode_key }}
 NETWORK={{ ethereum_network }}
 VERBOSITY=4
