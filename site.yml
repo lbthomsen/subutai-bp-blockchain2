@@ -86,7 +86,7 @@
     - name: Fetch bootnode key
       shell: "bootnode --nodekey /etc/bootnode.key --writeaddress"
       register: bootnode_key_fetch
-      when: inventory_hostname == 'bn0'
+      when: inventory_hostname == 'bn'
 
     - name: Store bootnode key
       set_fact: 
