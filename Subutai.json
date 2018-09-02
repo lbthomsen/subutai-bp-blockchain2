@@ -15,6 +15,12 @@
                 {
                     "protocol": "udp",
                     "domain": "${bootnodeDomain}",
+                    "internal-port": "30303",
+                    "external-port": "${bootnodePort}"
+                }, 
+                {
+                    "protocol": "tcp",
+                    "domain": "${bootnodeDomain}",
                     "internal-port": "30301",
                     "external-port": "${bootnodePort}"
                 }
