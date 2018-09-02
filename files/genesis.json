@@ -8,7 +8,6 @@
   
     "alloc"      : {},
     "difficulty" : "{{ ethereum_difficulty }}",
-    "extraData"  : "{{ ethereum_extra_data }}", 
     "gasLimit"   : "0x2fefd8",
     "nonce"      : "0x0000000000000042"
   }
