@@ -5,5 +5,4 @@ BOOTNODE_IP={{ hostvars[groups.bn[0]].ansible_default_ipv4.address }}
 BOOTNODE_KEY={{ hostvars[groups.bn[0]].bootnode_key }}
 COINBASE={{ coinbase }}
 NETWORK={{ ethereum_network }}
-MINE=
 VERBOSITY=4
