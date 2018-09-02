@@ -21,7 +21,7 @@
                 {
                     "protocol": "tcp",
                     "domain": "${bootnodeDomain}",
-                    "internal-port": "30301",
+                    "internal-port": "30303",
                     "external-port": "${bootnodePort}"
                 }
             ]
