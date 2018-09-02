@@ -161,4 +161,21 @@
         state: restarted
       when: bootnodes.changed
 
+- hosts: m
+  remote_user: root
+  tasks:
+
+    - name: Enable miner
+      lineinfile:
+        path: /etc/default/geth
+        regexp: '^MINE='
+        line: "MINE=--mine"
+      register: geth_default
+
+    - name: restart geth
+      systemd:
+        name: geth
+        state: restarted
+      when: geth_default.changed
+
 # vim: ts=4 et nowrap autoindent

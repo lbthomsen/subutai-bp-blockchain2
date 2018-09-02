@@ -82,6 +82,14 @@
                 "value": "${ethereumNetwork}"
             }, 
             {
+                "key": "ethereum_difficulty", 
+                "value": "${ethereumDifficulty}"
+            }, 
+            {
+                "key": "ethereum_extra_data", 
+                "value": "${ethereumExtraData}"
+            }, 
+            {
                 "key": "coinbase", 
                 "value": "${coinbase}"
             }
@@ -146,8 +154,19 @@
             "type": "int",
             "default": "2020"
         }, 
+        "ethereumDifficulty": {
+            "description": "Enter the mining difficulty",
+            "type": "string",
+            "default": "0x4000", 
+            "validation": "^0x[a-zA-Z0-9]+"
+        }, 
+        "ethereumExtraData": {
+            "description": "Enter the ethereum extradata",
+            "type": "string",
+            "default": "Blockchain in a Box II"
+        },
         "coinbase": {
-            "description": "Enter the coinbase",
+            "description": "Enter the coinbase (recipient of mined coins)",
             "type": "string",
             "default": "0x0CB71B91C8e56de5f93eC953fC3A6DB10045E948"
         }, 
