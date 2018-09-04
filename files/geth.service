@@ -5,7 +5,7 @@ After=bootnode.service
 [Service]
 Type=simple
 EnvironmentFile=-/etc/default/geth
-ExecStart=/usr/bin/geth --datadir ~/.ethereum/${NETWORK} --networkid ${NETWORK} --bootnodes "enode://${BOOTNODE_KEY}@${BOOTNODE_IP}:30301" --rpc --rpcaddr 0.0.0.0 --rpcport 8545 --rpcapi db,eth,net,web3,personal --verbosity=${VERBOSITY} --etherbase='${COINBASE}'
+ExecStart=/usr/bin/geth --datadir ~/.ethereum/${NETWORK} --networkid ${NETWORK} --bootnodes "enode://${BOOTNODE_KEY}@${BOOTNODE_IP}:30301" --rpc --rpcaddr 0.0.0.0 --rpcport 8545 --rpcapi eth,net,web3,personal,debug,trace --verbosity=${VERBOSITY} --etherbase='${COINBASE}' --rpccorsdomain="*" --nodiscover --maxpeers 250
 Restart=on-failure
 User=biab
 Group=users

@@ -1,11 +1,11 @@
 
-bn0 ansible_port=10004 ansible_host=10.143.181.2
-bc0 ansible_port=10005 ansible_host=10.143.181.2
-bc1 ansible_port=10007 ansible_host=10.143.181.1
-m0 ansible_port=10006 ansible_host=10.143.181.1
+bn ansible_port=10003 ansible_host=10.143.63.2
+bc0 ansible_port=10005 ansible_host=10.143.63.2
+bc1 ansible_port=10006 ansible_host=10.143.63.1
+m0 ansible_port=10007 ansible_host=10.143.63.1
 
 [bn]
-bn0
+bn
 
 [bc]
 bc0
