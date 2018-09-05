@@ -1,2 +1,4 @@
 *.retry
-#hosts
+hosts
+node_modules/
+package-lock.json
