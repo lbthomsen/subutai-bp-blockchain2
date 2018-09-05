@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html ng-app="biab2">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <meta name="generator" content="AngularJS" />
+        <meta name="description" content="Blockchain in a Box II" />
+        <meta name="keywords" content="subutai,cloud,blueprints,blockchain" />
+        <meta name="author" content="Lars Boegild Thomsen <lbthomsen@optdyn.com>" />
+        
+        <title>Blockcain in a Box II</title>
+
+        <!--build-css-start-->
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <!--build-css-end-->
+    </head>
+
+    <body ng-cloak>
+
+        <div><loading></loading></div>
+
+        <div><app-header class="mb-3"></app-header></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <app-sidebar/>
+                </div>
+                <div class="col-sm-9">
+                    <app-main>
+                        This site require Javascript!
+                    </app-main>
+                </div>
+            </div>
+        </div>
+
+        <div><app-footer class="mt-3"></app-footer></div>
+
+        <!--build-js-start-->
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <script src="node_modules/popper.js/dist/umd/popper.js"></script>
+        <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="node_modules/moment/moment.js"></script>
+
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/angular-animate/angular-animate.js"></script>
+        <script src="node_modules/angular-resource/angular-resource.js"></script>
+        <script src="node_modules/angular-moment/angular-moment.js"></script>
+        <script src="node_modules/angular-loading-lbthomsen/angular-loading.js"></script>
+        <script src="node_modules/angular-head-lbthomsen/angular-head.js"></script>
+        <script src="node_modules/angular-inview-lbthomsen/angular-inview.js"></script>
+
+        <script src="application.js"></script>
+
+        <script src="services/package.service.js"></script>
+
+        <script src="directives/app-header.directive.js"></script>
+        <script src="directives/app-sidebar.directive.js"></script>
+        <script src="directives/app-main.directive.js"></script>
+        <script src="directives/app-footer.directive.js"></script>
+        <script src="directives/ad.directive.js"></script>
+        <script src="directives/inview-img.directive.js"></script>
+
+        <script src="routes/static.route.js"></script>
+        <script src="routes/about.route.js"></script>
+        <!--build-js-end-->
+        
+    </body>
+
+</html>

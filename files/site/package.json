@@ -1,0 +1,40 @@
+{
+  "name": "blockchain-in-a-box-2",
+  "version": "0.0.1",
+  "description": "Blockchain in a Box II (BIAB2)",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "node server"
+  },
+  "author": "Lars Boegild Thomsen <lbthomsen@optdyn.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "angular": "^1.7.3",
+    "angular-animate": "^1.7.3",
+    "angular-head-lbthomsen": "^1.0.1",
+    "angular-inview-lbthomsen": "^3.0.0",
+    "angular-loading-lbthomsen": "^0.9.3",
+    "angular-moment": "^1.2.0",
+    "angular-resource": "^1.7.3",
+    "angular-route": "^1.7.3",
+    "bootstrap": "^4.1.3",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.4"
+  },
+  "devDependencies": {
+    "compression": "^1.7.3",
+    "express": "^4.16.3",
+    "grunt": "^1.0.3",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-htmlmin": "^2.4.0",
+    "grunt-contrib-symlink": "^1.0.0",
+    "grunt-contrib-uglify": "^3.4.0",
+    "grunt-replace": "^1.0.1",
+    "request": "^2.88.0"
+  }
+}

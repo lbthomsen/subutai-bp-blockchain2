@@ -1,0 +1,35 @@
+<set-title title="About"></set-title>
+<set-meta name="description" content="About Lars' Subutai Site"></set-meta>
+<set-meta name="keywords" content="subutai,cloud,open source,p2p"></set-meta>
+<h1>About {{aboutCtrl.package.name}}</h1>
+
+<p>
+    {{aboutCtrl.package.description}}
+</p>
+
+<h2>Technology</h2>
+<p>
+    This site is written as an AngularJS HTML5 application.  It is hosted entirely on IPFS (Interplanetary File
+    System).
+</p>
+
+<h2>Dependencies</h2>
+<p>
+    {{aboutCtrl.package.name}} uses the following npm packages:
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Version</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="package in aboutCtrl.packages">
+            <td>{{package.name}}</td>
+            <td>{{package.version}}</td>
+            <td>{{package.description}}</td>
+        </tr>
+    </tbody>
+</table>

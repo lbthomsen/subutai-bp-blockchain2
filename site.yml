@@ -27,12 +27,22 @@
 
     - name: Add ethereum repo key
       apt_key:
-        id: "1C52189C923F6CA9"
+        id: 1C52189C923F6CA9
         keyserver: keyserver.ubuntu.com
 
-    - name: Add ethereum repo
+    - name: Add node repo key
+      apt_key:
+        id: 1655A0AB68576280
+        keyserver: keyserver.ubuntu.com
+
+    - name: Add node repo
       apt_repository:
         repo: deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main
+        state: present
+
+    - name: Add node repo
+      apt_repository:
+        repo: deb https://deb.nodesource.com/node_10.x stretch main
         state: present
 
     - name: Upgrade debian
@@ -161,11 +171,25 @@
         state: restarted
       when: bootnodes.changed
 
+- hosts: bn
+  remote_user: root
+  tasks:
+
+    - name: Install required debs
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - apache2
+        - nodejs
+
 - hosts: m
   remote_user: root
   tasks:
 
     - name: Start miner
       shell: geth --exec "miner.start()" attach /home/biab/.ethereum/{{ ethereum_network }}/geth.ipc
+      become: yes
+      become_user: biab
 
 # vim: ts=4 et nowrap autoindent

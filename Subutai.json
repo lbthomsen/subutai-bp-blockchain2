@@ -1,7 +1,7 @@
 {
     "name": "${environmentName}",
     "description": "Blockchain in a Box mk. II (aka. Blockchain in Many Boxes)",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "https://github.com/lbthomsen",
     "ssh-key": "lth",
     "containers": [
@@ -12,6 +12,12 @@
             "peer-layout": "bn",
             "size": "${containerSize}",
             "port-mapping": [
+                {
+                    "protocol": "http",
+                    "domain": "${domain}",
+                    "internal-port": "80",
+                    "external-port": "80"
+                },
                 {
                     "protocol": "udp",
                     "domain": "${bootnodeDomain}",
@@ -118,6 +124,12 @@
         ]
     },
     "user-variables": {
+        "domain": {
+            "description": "Enter the primary domain name",
+            "type": "domain",
+            "default": "change.the.domain",
+            "validation": "[a-zA-Z0-9]+"
+        },
         "bootnodeDomain": {
             "description": "Enter the bootnode domain name",
             "type": "domain",
