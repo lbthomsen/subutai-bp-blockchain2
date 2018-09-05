@@ -1,7 +1,7 @@
 {
     "name": "${environmentName}",
     "description": "Blockchain in a Box mk. II (aka. Blockchain in Many Boxes)",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "author": "https://github.com/lbthomsen",
     "ssh-key": "lth",
     "containers": [
@@ -20,15 +20,15 @@
                 },
                 {
                     "protocol": "udp",
-                    "domain": "${bootnodeDomain}",
+                    "domain": "${discDomain}",
                     "internal-port": "30303",
-                    "external-port": "${bootnodePort}"
+                    "external-port": "${discPort}"
                 }, 
                 {
                     "protocol": "tcp",
-                    "domain": "${bootnodeDomain}",
+                    "domain": "${rpcDomain}",
                     "internal-port": "30303",
-                    "external-port": "${bootnodePort}"
+                    "external-port": "${rpcPort}"
                 }
             ]
         },
@@ -41,9 +41,9 @@
             "port-mapping": [
                 {
                     "protocol": "http",
-                    "domain": "${blockchainDomain}",
+                    "domain": "${jsonDomain}",
                     "internal-port": "8545",
-                    "external-port": "8545"
+                    "external-port": "${jsonPort}"
                 }
             ]
         },
@@ -82,12 +82,20 @@
         "ansible-playbook": "site.yml",
         "extra-vars": [
             {
-                "key": "bootnode_domain",
-                "value": "${bootnodeDomain}"
+                "key": "domain",
+                "value": "${domain}"
             },
             {
-                "key": "blockchain_domain",
-                "value": "${blockchainDomain}"
+                "key": "json_domain",
+                "value": "${jsonDomain}"
+            },
+            {
+                "key": "rpc_domain",
+                "value": "${rpcDomain}"
+            },
+            {
+                "key": "disc_domain",
+                "value": "${discDomain}"
             },
             {
                 "key": "ethereum_network",
@@ -124,34 +132,50 @@
         ]
     },
     "user-variables": {
+        "environmentName": {
+            "description": "Enter the environment name",
+            "type": "string",
+            "default": "biab2",
+            "validation": "[a-zA-Z0-9]+"
+        },
         "domain": {
             "description": "Enter the primary domain name",
             "type": "domain",
             "default": "change.the.domain",
             "validation": "[a-zA-Z0-9]+"
         },
-        "bootnodeDomain": {
-            "description": "Enter the bootnode domain name",
+        "discDomain": {
+            "description": "Enter the discovery domain name",
             "type": "domain",
             "default": "change.the.domain",
             "validation": "[a-zA-Z0-9]+"
         },
-        "blockchainDomain": {
-            "description": "Enter the blockchain domain name",
-            "type": "domain",
-            "default": "change.the.domain",
-            "validation": "[a-zA-Z0-9]+"
-        },
-        "bootnodePort": {
-            "description": "Enter the bootnode port number",
+        "discPort": {
+            "description": "Enter the discovery port number",
             "type": "int",
-            "default": "30301"
+            "default": "30303"
         },
-        "environmentName": {
-            "description": "Enter the environment name",
-            "type": "string",
-            "default": "biab2",
+        "rpcDomain": {
+            "description": "Enter the discovery domain name",
+            "type": "domain",
+            "default": "change.the.domain",
             "validation": "[a-zA-Z0-9]+"
+        },
+        "rpcPort": {
+            "description": "Enter the discovery port number",
+            "type": "int",
+            "default": "30303"
+        },
+        "jsonDomain": {
+            "description": "Enter the json domain name",
+            "type": "domain",
+            "default": "change.the.domain",
+            "validation": "[a-zA-Z0-9]+"
+        },
+        "jsonPort": {
+            "description": "Enter the json port number",
+            "type": "int",
+            "default": "8546"
         },
         "numberOfNodes": {
             "description": "Enter the number of nodes",
