@@ -66,6 +66,7 @@
         - aptitude
         - screen 
         - nodejs
+        - git
 
 - hosts: bn
   remote_user: root
