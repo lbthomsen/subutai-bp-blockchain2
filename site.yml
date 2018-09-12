@@ -65,6 +65,7 @@
         - net-tools
         - aptitude
         - screen 
+        - nodejs
 
 - hosts: bn
   remote_user: root
@@ -187,6 +188,17 @@
       with_items: 
         - apache2
         - nodejs
+
+- hosts: bn
+  remote_user: root
+  tasks:
+
+    - name: Clone explorer
+      git:
+        repo: https://github.com/etherparty/explorer.git
+        dest: /home/biab/explorer
+      become: yes
+      become_user: biab
 
 - hosts: m
   remote_user: root
