@@ -64,9 +64,7 @@
         - ethereum 
         - net-tools
         - aptitude
-        - screen 
-        - nodejs
-        - git
+        - screen
 
 - hosts: bn
   remote_user: root
@@ -193,6 +191,15 @@
 - hosts: bn
   remote_user: root
   tasks:
+
+    - name: Install required debs
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - build-essential
+        - nodejs
+        - git
 
     - name: Clone explorer
       git:
