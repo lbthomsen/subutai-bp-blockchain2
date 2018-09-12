@@ -47,7 +47,7 @@
 
     - name: Add node repo
       apt_repository:
-        repo: deb https://deb.nodesource.com/node_10.x stretch main
+        repo: deb https://deb.nodesource.com/node_8.x stretch main
         state: present
 
     - name: Upgrade debian
@@ -201,10 +201,17 @@
         - nodejs
         - git
 
-    - name: Clone explorer
+    - name: Clone etherchain-light
       git:
-        repo: https://github.com/etherparty/explorer.git
-        dest: /home/biab/explorer
+        repo: https://github.com/lbthomsen/etherchain-light.git
+        dest: /home/biab/etherchain-light
+      become: yes
+      become_user: biab
+
+    - name: Update packages based on package.json to their latest version.
+      npm:
+        path: /home/biab/etherchain-light
+        state: latest
       become: yes
       become_user: biab
 
