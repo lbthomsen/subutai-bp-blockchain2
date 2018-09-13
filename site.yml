@@ -201,52 +201,52 @@
         - nodejs
         - git
 
-    - name: Install parity
-      get_url: 
-        url: https://releases.parity.io/v2.0.4/x86_64-unknown-linux-gnu/parity
-        dest: /usr/local/bin/parity
-        mode: 0755
+    # - name: Install parity
+    #   get_url: 
+    #     url: https://releases.parity.io/v2.0.4/x86_64-unknown-linux-gnu/parity
+    #     dest: /usr/local/bin/parity
+    #     mode: 0755
 
-    - name: Install parity.json
-      template:
-        src: files/parity.json
-        dest: /home/biab/parity.json
-      become: yes
-      become_user: biab
+    # - name: Install parity.json
+    #   template:
+    #     src: files/parity.json
+    #     dest: /home/biab/parity.json
+    #   become: yes
+    #   become_user: biab
 
-    - name: Clone etherchain-light
-      git:
-        repo: https://github.com/lbthomsen/etherchain-light.git
-        dest: /home/biab/etherchain-light
-      become: yes
-      become_user: biab
+    # - name: Clone etherchain-light
+    #   git:
+    #     repo: https://github.com/lbthomsen/etherchain-light.git
+    #     dest: /home/biab/etherchain-light
+    #   become: yes
+    #   become_user: biab
 
-    - name: Update packages based on package.json to their latest version.
-      npm:
-        path: /home/biab/etherchain-light
-        state: latest
-      become: yes
-      become_user: biab
+    # - name: Update packages based on package.json to their latest version.
+    #   npm:
+    #     path: /home/biab/etherchain-light
+    #     state: latest
+    #   become: yes
+    #   become_user: biab
 
-    - name: Copy config file
-      template: 
-        src: files/config.js
-        dest: /home/biab/etherchain-light/config.js
-      become: yes
-      become_user: biab
+    # - name: Copy config file
+    #   template: 
+    #     src: files/config.js
+    #     dest: /home/biab/etherchain-light/config.js
+    #   become: yes
+    #   become_user: biab
 
-    - name: Copy service unit
-      template:
-        src: files/etherchain.service
-        dest: /lib/systemd/system/etherchain.service
+    # - name: Copy service unit
+    #   template:
+    #     src: files/etherchain.service
+    #     dest: /lib/systemd/system/etherchain.service
       
-    - name: Restart etherchain
-      systemd: 
-        name: etherchain
-        daemon_reload: yes
-        enabled: yes
-        masked: no
-        state: restarted
+    # - name: Restart etherchain
+    #   systemd: 
+    #     name: etherchain
+    #     daemon_reload: yes
+    #     enabled: yes
+    #     masked: no
+    #     state: restarted
 
 - hosts: m
   remote_user: root
