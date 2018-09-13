@@ -215,6 +215,26 @@
       become: yes
       become_user: biab
 
+    - name: Copy config file
+      template: 
+        src: files/config.js
+        dest: /home/biab/etherchain-light/config.js
+      become: yes
+      become_user: biab
+
+    - name: Copy service unit
+      template:
+        src: files/etherchain.service
+        dest: /lib/systemd/system/etherchain.service
+      
+    - name: Restart etherchain
+      systemd: 
+        name: etherchain
+        daemon_reload: yes
+        enabled: yes
+        masked: no
+        state: restarted
+
 - hosts: m
   remote_user: root
   tasks:

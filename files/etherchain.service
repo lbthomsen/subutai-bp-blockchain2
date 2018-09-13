@@ -1,0 +1,15 @@
+[Unit]
+Description=Run etherchain-light
+After=geth.service
+
+[Service]
+Type=simple
+WorkingDirectory=/home/biab/etherchain-light
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+User=biab
+Group=users
+
+[Install]
+WantedBy=multi-user.target
+Alias=etherchain.service
