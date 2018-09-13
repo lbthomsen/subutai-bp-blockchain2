@@ -197,7 +197,7 @@
         - mpm_event
 
     - name: Enable apache modules
-      shell: a2endmod {{ item }}
+      shell: a2enmod {{ item }}
       with_items: 
         - mpm_prefork
         - cgi
