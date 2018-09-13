@@ -34,7 +34,7 @@
             "size": "${containerSize}", 
             "port-mapping": [
                 {
-                    "protocol": "http",
+                    "protocol": "tcp",
                     "domain": "${jsonDomain}",
                     "internal-port": "8545",
                     "external-port": "${jsonPort}"
