@@ -196,6 +196,7 @@
         state: absent
       with_items:
         - mpm_worker
+        - mpm_event
 
     - name: Enable apache modules
       apache2_module:
