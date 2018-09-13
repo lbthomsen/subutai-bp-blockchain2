@@ -195,6 +195,7 @@
         name: "{{ item }}"
         state: present
       with_items: 
+        - mpm_prefork
         - cgi
       register: apache2
 

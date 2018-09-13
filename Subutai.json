@@ -19,12 +19,6 @@
                     "external-port": "80"
                 },
                 {
-                    "protocol": "udp",
-                    "domain": "${discDomain}",
-                    "internal-port": "30303",
-                    "external-port": "${discPort}"
-                }, 
-                {
                     "protocol": "tcp",
                     "domain": "${rpcDomain}",
                     "internal-port": "30303",
