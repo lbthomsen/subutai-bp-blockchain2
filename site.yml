@@ -190,6 +190,13 @@
         - dnsutils
       register: apache2
 
+    - name: Disable apache modules
+      apache2_module:
+        name: "{{ item }}"
+        state: absent
+      with_items:
+        - mpm_worker
+
     - name: Enable apache modules
       apache2_module:
         name: "{{ item }}"
