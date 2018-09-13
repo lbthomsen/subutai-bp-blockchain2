@@ -191,21 +191,16 @@
       register: apache2
 
     - name: Disable apache modules
-      apache2_module:
-        name: "{{ item }}"
-        state: absent
+      shell: a2dismod {{ item }}
       with_items:
         - mpm_worker
         - mpm_event
 
     - name: Enable apache modules
-      apache2_module:
-        name: "{{ item }}"
-        state: present
+      shell: a2endmod {{ item }}
       with_items: 
         - mpm_prefork
         - cgi
-      register: apache2
 
     - name: Install sudoers
       template:
