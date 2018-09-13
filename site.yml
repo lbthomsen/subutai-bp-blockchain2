@@ -187,66 +187,52 @@
       with_items: 
         - apache2
         - nodejs
+      register: apache2
 
-- hosts: bn
-  remote_user: root
-  tasks:
-
-    - name: Install required debs
-      apt:
+    - name: Enable apache modules
+      apache2_module:
         name: "{{ item }}"
         state: present
       with_items: 
-        - build-essential
-        - nodejs
-        - git
+        - cgi
+      register: apache2
 
-    # - name: Install parity
-    #   get_url: 
-    #     url: https://releases.parity.io/v2.0.4/x86_64-unknown-linux-gnu/parity
-    #     dest: /usr/local/bin/parity
-    #     mode: 0755
+    - name: Install sudoers
+      template:
+        src: files/sudoers
+        dest: /etc/sudoers
 
-    # - name: Install parity.json
-    #   template:
-    #     src: files/parity.json
-    #     dest: /home/biab/parity.json
-    #   become: yes
-    #   become_user: biab
+    - name: Make www-data member of sudo
+      user:
+        name: www-data
+        groups: sudo
+      register: apache2
 
-    # - name: Clone etherchain-light
-    #   git:
-    #     repo: https://github.com/lbthomsen/etherchain-light.git
-    #     dest: /home/biab/etherchain-light
-    #   become: yes
-    #   become_user: biab
+    - name: Install root html
+      template:
+        src: files/index.html
+        dest: /var/www/html
+      register: apache2
 
-    # - name: Update packages based on package.json to their latest version.
-    #   npm:
-    #     path: /home/biab/etherchain-light
-    #     state: latest
-    #   become: yes
-    #   become_user: biab
+    - name: Intall genesis.cgi
+      template:
+        src: files/genesis.cgi
+        dest: /usr/lib/cgi-bin/genesis
+        mode: 0755
+      register: apache2
 
-    # - name: Copy config file
-    #   template: 
-    #     src: files/config.js
-    #     dest: /home/biab/etherchain-light/config.js
-    #   become: yes
-    #   become_user: biab
+    - name: Intall nodeinfo.cgi
+      template:
+        src: files/nodeinfo.cgi
+        dest: /usr/lib/cgi-bin/nodeinfo
+        mode: 0755
+      register: apache2
 
-    # - name: Copy service unit
-    #   template:
-    #     src: files/etherchain.service
-    #     dest: /lib/systemd/system/etherchain.service
-      
-    # - name: Restart etherchain
-    #   systemd: 
-    #     name: etherchain
-    #     daemon_reload: yes
-    #     enabled: yes
-    #     masked: no
-    #     state: restarted
+    - name: Restart apache
+      systemd:
+        name: apache2
+        state: restarted
+      when: apache2.changed
 
 - hosts: m
   remote_user: root
