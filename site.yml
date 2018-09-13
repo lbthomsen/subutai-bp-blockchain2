@@ -187,6 +187,7 @@
       with_items: 
         - apache2
         - nodejs
+        - dnsutils
       register: apache2
 
     - name: Enable apache modules
