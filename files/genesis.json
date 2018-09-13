@@ -1,24 +1,29 @@
 {
-    "config": {
-      "chainId": {{ ethereum_network }},
-      "homesteadBlock": 1,
-      "eip150Block": 2,
-      "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-      "eip155Block": 3,
-      "eip158Block": 3,
-      "byzantiumBlock": 4,
-      "ethash": {
-        
-      }
-    },
-    "nonce": "0x0",
-    "timestamp": "0x5b935270",
-    "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "gasLimit": "0x47b760",
-    "difficulty": "{{ ethereum_difficulty }}",
-    "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
-    "coinbase": "{{ coinbase }}",
-    "number": "0x0",
-    "gasUsed": "0x0",
-    "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
-  }
+  "config": {
+    "chainId": {{ ethereum_network }},
+    "homesteadBlock": 1,
+    "eip150Block": 2,
+    "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "eip155Block": 3,
+    "eip158Block": 3,
+    "byzantiumBlock": 4,
+    "ethash": {
+      
+    }
+  },
+  "nonce": "0x0",
+  "timestamp": "0x5b935270",
+  "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "gasLimit": "0x47b760",
+  "difficulty": "{{ ethereum_difficulty }}",
+  "mixHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "coinbase": "{{ coinbase }}",
+  "alloc": {
+    "{{ coinbase }}": {
+      "balance": "0x200000000000000000000000000000000000000000000000000000000000000"
+    }
+  },
+  "number": "0x0",
+  "gasUsed": "0x0",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
