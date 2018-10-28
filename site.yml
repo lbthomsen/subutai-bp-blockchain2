@@ -61,7 +61,7 @@
         state: present
       with_items: 
         - sudo
-        - ethereum 
+        - ethereum-unstable
         - net-tools
         - aptitude
         - screen
